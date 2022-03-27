@@ -25,8 +25,8 @@ router.post(
     const errors = validationResult(req); //if validating process gets an error it will be saved in errors object
 
     if (!errors.isEmpty()) {
-      //if errors object is not empty return it
-      return res.status(400).send(errors.array());
+      //if errors object is not empty throw error (it uses error handeling middleware)
+      throw new Error("Invalid email or password");
     }
     //---------------// *? error checking -----------------------------
 
